@@ -1,0 +1,52 @@
+This is BibTeX, Version 0.99d (TeX Live 2017/Debian)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
+The top-level auxiliary file: main.aux
+The style file: abbrv.bst
+White space in argument---line 130 of file main.aux
+ : \bibdata{refs,
+ :                censBib}
+I'm skipping whatever remains of this command
+Database file #1: refs.bib
+Warning--empty journal in nakamoto2008bitcoin
+You've used 53 entries,
+            2118 wiz_defined-function locations,
+            785 strings with 14725 characters,
+and the built_in function-call counts, 21145 in all, are:
+= -- 2055
+> -- 1031
+< -- 27
++ -- 413
+- -- 353
+* -- 1381
+:= -- 3251
+add.period$ -- 163
+call.type$ -- 53
+change.case$ -- 335
+chr.to.int$ -- 0
+cite$ -- 54
+duplicate$ -- 874
+empty$ -- 1695
+format.name$ -- 353
+if$ -- 4618
+int.to.chr$ -- 0
+int.to.str$ -- 53
+missing$ -- 49
+newline$ -- 266
+num.names$ -- 102
+pop$ -- 450
+preamble$ -- 1
+purify$ -- 285
+quote$ -- 0
+skip$ -- 694
+stack$ -- 0
+substring$ -- 1229
+swap$ -- 305
+text.length$ -- 27
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 206
+warning$ -- 1
+while$ -- 193
+width$ -- 55
+write$ -- 573
+(There was 1 error message)
