@@ -7,7 +7,8 @@ an anonymity system like Tor. We tunnel \bc traffic over Tor to disguise its pat
 Tor sends traffic in \textit{cells}. If the packets sizes is below the cell size, it will add padding to the packets to reach the fixed cell sizes. This modifies the traffic patterns of \bc traffic, e.g., its packet sizes, therefore it may increase resistance to traffic classification. 
 In the following we evaluate our classifiers against Tor and three state-of-the-art Tor 
 pluggable transports~\cite{pluggable-transport} namely \textit{obfs4}, \textit{FTE}, and \textit{Meek} explained in the following. 
-\subsubsection{Pluggable Transports}
+
+\paragraphb{Pluggable Transports:} We evaluated against the following major transports:
 \begin{compactitem}
 \item	\textbf{Obfs4:}
 obfs4 is a widely used Tor pluggable transport, which is based on \textit{ScrambleSuit}~\cite{scramblesuit}. It differs with ScrambleSuit in public key obfuscation and its protocol for one-way authentication, which makes it faster. 
@@ -40,11 +41,12 @@ Meek uses \textit{domain fronting}~\cite{meek-PETS} to tunnel traffic through pu
 Figures~\ref{fig:tor_reg_traffic_pkt_size_upstream} to \ref{fig:tor_compact_block_pkt_size_downstream} in Appendix~\ref{sec:bcshape} compare the distribution of packet sizes of HTTP and \bc when tunneled over Tor in different modes, showing an identifiable pattern.\fi
  
 \subsection{Evaluating \bc over Tor}
-\subsubsection{\code{SizeTor} classifier}
+\paragraphb{\code{SizeTor} classifier}
 We implement ~\code{SizeTor} classifier on noisy \bc on compact mode for Tor and its three pluggable transports. As it is displayed in Figure~\ref{fig:tor_sizeTor}, we could detect \bc traffic with high accuracy for the complex user model when the background noise is one open tab. As Figure~\ref{fig:tor_sizeTor} indicates, having a traffic size of $10$ minutes is
 enough to detect \bc traffic with around $90\%$ true positive and $0\%$ of false positive. Moreover, the Figure states that the result of classifier quickly diminishes when we increase the background noise from one to $2$ or $3$ open tabs.
 Note that this figure shows the average result of this classifier on Tor and three pluggable transports.
-\subsubsection{Neural Network-based classifier}
+
+\paragraphb{Neural Network-based classifier}
 Table~\ref{tab:nn_tor} presents the result of NN-based classifier for the complex web user over Tor for $10,000$ numbers of test data. As the table suggests, performance of our classifier improves when we increase the size of training data. More specifically, our false positives enhances from $11\%$ to $4\%$ when we increase the training data from $1000$ to $40,000$. Moreover, when using $40,000$ training data, we reach $99\%$ and $4\%$ true and false positive, respectively ($97\%$ accuracy). Note that the reason we get better results from this classifier on Tor dataset is that this dataset only contains the complex web user since we did not have CAIDA application over Tor to use for our evaluation.
 \begin{comment}
 \begin{table}[h!]
@@ -62,7 +64,6 @@ Table~\ref{tab:nn_tor} presents the result of NN-based classifier for the comple
   \end{center}
 \end{table}
 \end{comment}
-
 \begin{table}
 \center \caption{Result of neural network classifier on Tor dataset.}\label{tab:nn_tor}
 \begin{tabular}{|c|c|c|c|}
@@ -114,8 +115,7 @@ Another countermeasure that we evaluate is passing our traffic through VPN. Sinc
 
 
 
-\subsubsection{Combined classifier over Tor}
-
+\paragraphb{Combined classifier over Tor}
 We apply the combined classifier on our Tor dataset, which consists of \bc traffic with up to $5$ number of open tabs on the background. Our experiments show that having $40,000$ of training data is enough to achieve more than $99.72\%$ accuracy with $0.04\%$ false positive and $99.5\%$ true positive. Our combined classifier outperforms the previous classifiers (SizeTor and NN-based) on the Tor dataset as well. This is because we are using a more complex model and a more significant number of features.
 
 
