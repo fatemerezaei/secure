@@ -81,7 +81,8 @@ We estimate a target client's block downloading time as $\frac{block\ size}{clie
 
 \subsection{Neural Network-based Classifier (NN-based)}\label{class:nn}
 We use a neural network-based classifier to detect \bc in presence of a more complex background noise, e.g., browsing more than one website simultaneously. In following, we explain the feature selection phase, and then describe the design of our neural network.
-\subsubsection{Feature selection}
+
+\paragraphb{Feature selection}
 %Again, we leverage the unique shape of \bc traffic as discussed before to classify \bc traffic using our NN-based classifier. 
 To create each sample data, we divide time into intervals
 and use the volume of traffic in each interval as our features, which is 
@@ -102,7 +103,8 @@ length $60$ as our feature.
 \begin{equation}\label{eq:a}
 \mbox{vlm}=v_1, v_2, ..., v_{n}
 \end{equation}\fi
-\subsubsection{Designing the model}
+
+\paragraphb{Designing the model}
 For our neural network model, we use a combination of convolutional and fully-connected network that 
 consists of an input layer, an output layer, and three hiden layers: one convolutional layer, and two dense layers. The input layer has $n=60$ number of neurons, which is the size of each sample data, the hidden layers have $n_1=64$, $n_2=32$ and $n_3 = 16$ number of neurons, respectively, and the output layer has $1$ neuron which represents if the sample data contains \bc 
 traffic or not. We use Relu as the activation function of the hidden layers and 
