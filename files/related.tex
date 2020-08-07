@@ -1,17 +1,17 @@
 
 \section{Related Work}\label{related}
-%\red{i spotted some formatting/ grammar issues. please proofread.}
+\red{i spotted some formatting/ grammar issues. please proofread.}
 
-%\red{shrink related work to make room for important text you removed. this is too long. }
+\red{shrink related work to make room for important text you removed. this is too long. }
 
 In this section, we overview previous work on 
 classifying different protocols and discuss previous attacks on \bc cryptocurrency.
 
 \subsection{Protocol Classification}
-There is extensive work in literature attempting to classify different applications or protocols in the network. Previously, researchers were focused on classification according to the port numbers~\cite{tcp_p2p,ports} and payload~\cite{payload_p2p,payload_content}. Since many applications use uncertain port numbers~\cite{ports}, or some encrypt their payloads, researchers adopted new methods for protocol classification.
-Recent techniques use statistics such as packet sizes and timings for classification~\cite{real_enc,web_p2p,blinc}. 
+There is extensive work in literature attempting to classify different applications or protocols in the network. Previously, researchers were focused on classification according to the port numbers~\cite{tcp_p2p,ports,port_mad,payload_p2p} and payload~\cite{payload_p2p,payload_content,payload_app,payload_moore}. Since many applications use uncertain port numbers~\cite{ports}, or some encrypt their payloads, researchers adopted new methods for protocol classification.
+Recent techniques use statistics such as packet sizes and timings for classification~\cite{real_enc,web_p2p,blinc,prot_fing,semi,trafficClassSVM,svm2}. 
 
-In some of the studies, researchers apply machine learning techniques on these statistics to classify different applications\cite{semi, trafficClassSVM,svm2,MooreZ05,bays2,mlEffi}.
+In some of the studies, researchers apply machine learning techniques on these statistics to classify different applications.%\cite{semi, svm2,MooreZ05,mlEffi}.
 For example, in~\cite{semi}, authors take a semi-supervised approach to classify a variety of applications such as FTP, HTTP, P2P.  
 In~\cite{trafficClassSVM,svm2}, authors use SVM classifier to distinguish different applications such as WWW, Mail, and FTP. Also, in~\cite{svm2}, authors use SVM to classify a broad application category such as mail, buck traffic, service. Moreover, in~\cite{survey_ml,myth}, authors survey the papers on Internet traffic classification using machine learning techniques.
 \begin{comment}
@@ -26,10 +26,10 @@ In~\cite{MooreZ05}, Andrew W. Moore et al. use two refinements on the Bayesian t
  In~\cite{hijack}, the authors discuss routing attacks, their impact, and possible countermeasures. They study partitioning and delay attacks by investigating node-level and network-wide attacks for both. 
 In~\cite{eclipse}, authors design eclipse attack in which the attacker isolate a victim from its peers by monopolizing its all incoming and outgoing connections, and filters her view of the network. In doing so, the attacker wastes her computing power on an outdated view of the network.
 
-In~\cite{analysis_anon,privacy_anon,struct,fist,quant}, authors use \bc transaction patterns
+In~\cite{analysis_anon,privacy_anon}, authors use \bc transaction patterns
 to link users (or link transactions) using some side information.
 In~\cite{deanom1}, the authors propose a technique to link the public key of a user to her address or link her transactions. They show that they could launch their attacks even when the clients are behind NAT using only a few machines.
  In~\cite{double}, they analyze the security of using \bc for fast payments and show that the current \bc system is not secure unless they integrate \bc network with some detection mechanism.
  Also, they study double-spending attacks on fast payments and implement a method to prevent it.
  In~\cite{majority}, the authors introduce selfish-mine in which a pool can obtain a revenue larger than its share of mining power by forcing the honest miners to work on the wrong block, and therefore, waste their computing power.
-In~\cite{refund}, the authors propose a new attack on the \bc payment system that exploits some authentication vulnerability, or some weakness on the refund procedure. They suggest a revision on the \bc payment protocol, which prevents both attacks.
+%In~\cite{refund}, the authors propose a new attack on the \bc payment system that exploits some authentication vulnerability, or some weakness on the refund procedure. They suggest a revision on the \bc payment protocol, which prevents both attacks.

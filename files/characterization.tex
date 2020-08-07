@@ -80,7 +80,7 @@ Message & Packets per minute & Proportion  & Average packet size\\ \hline
 \end{figure*}
 
 %\begin{comment}
-\begin{figure*}
+\begin{figure*}[h]
 \centering
 \begin{subfigure}{.24\linewidth}
 \centering
@@ -154,18 +154,18 @@ Message & Packets per minute & Proportion  & Average packet size\\ \hline
 \captionof{figure}{VoIP, downstream}
 \label{fig:voip_pkt_size_downstream}
 \end{subfigure}
-\begin{subfigure}{.24\linewidth}
-\centering
-\includegraphics[width=\linewidth]{image/bittorrent_pkt_size_upstream.eps}
-\caption{BitTorrent, upstream}
-\label{fig:bittorrent_pkt_size_upstream}
-\end{subfigure}
-\begin{subfigure}{.24\linewidth}
-\centering
-\includegraphics[width=\linewidth]{image/bittorrent_pkt_size_downstream.eps}
-\caption{BitTorrent, downstream}
-\label{fig:bittorrent_pkt_size_downstream}
-\end{subfigure}
+%\begin{subfigure}{.24\linewidth}
+%\centering
+%\includegraphics[width=\linewidth]{image/%bittorrent_pkt_size_upstream.eps}
+%\caption{BitTorrent, upstream}
+%\label{fig:bittorrent_pkt_size_upstream}
+%\end{subfigure}
+%\begin{subfigure}{.24\linewidth}
+%\centering
+%\includegraphics[width=\linewidth]{image/%bittorrent_pkt_size_downstream.eps}
+%\caption{BitTorrent, downstream}
+%\label{fig:bittorrent_pkt_size_downstream}
+%\end{subfigure}
 \caption{Upstream and downstream packet size distribution of \bc and several popular protocols}\label{fig:traff-hist}
 \end{figure*}
 %\end{comment}
@@ -201,7 +201,7 @@ As mentioned before, \code{tx} and \code{inv} dominate the messages sent by a ty
 We also show the histogram of \bc traffic in the full block relaying mode in Figures~\ref{fig:aggregate_pkt_size_upstream_full} and~\ref{fig:aggregate_pkt_size_downstream_full}. These histograms have a larger spike close to the MTU, unlike the case of compact block relaying. These are because of the larger block sizes (around 1MB) in the full block relaying. 
 
 \paragraphe{Comparing to other protocols:}
-Figures~\ref{fig:http_pkt_size_upstream} to~\ref{fig:bittorrent_pkt_size_downstream}  show the histogram of other popular protocols, collected as described in Section~\ref{sec:exp-dataset}. Note that we look at the traffic after going through an encryption tunnel, e.g., a VPN or SSH tunnel, so the histogram includes the (small) TCP ACK packets. 
+Figures~\ref{fig:http_pkt_size_upstream} to~\ref{fig:voip_pkt_size_downstream}  show the histogram of other popular protocols, collected as described in Section~\ref{sec:exp-dataset}. Note that we look at the traffic after going through an encryption tunnel, e.g., a VPN or SSH tunnel, so the histogram includes the (small) TCP ACK packets. 
 As we can see, 
 the packet size distribution of \bc is uniquely different from these other protocols, since a \bc connection is composed of unique messages with specific size distributions shown before. For instance, the large number of \code{inv} messages shapes the overall distribution of sizes in \bc traffic. 
 
@@ -278,13 +278,13 @@ As can be seen, most of the compact blocks are as small as 15 KB (in contrast to
  \begin{figure*}[!t]
 \begin{subfigure}{.48\linewidth}
 \centering
-\includegraphics[width=\linewidth]{image/bitcoin_traffic_pattern.pdf}
+\includegraphics[width=0.9\linewidth]{image/bitcoin_traffic_pattern.pdf}
 \caption{Full block}
 \label{fig:bitcoin_traffic_pattern}
 \end{subfigure}
 \centering
 \begin{subfigure}{.48\linewidth}
-\includegraphics[width=\linewidth]{image/cmpctblock_traffic_volume_good.eps}
+\includegraphics[width=0.9\linewidth]{image/cmpctblock_traffic_volume_good.eps}
 \caption{Compact block}
 \label{fig:cmpctblock_traffic_volume_detectable}
 \end{subfigure}
@@ -298,22 +298,22 @@ As described earlier,  a \bc client operating in the compact block mode will dow
 This is shown in Figure~\ref{fig:blocktxn_volume}. 
 As we can see most of the transactions have volumes less than 100 KB. 
 
- \begin{figure*}[!t]
+ \begin{figure}[!t]
 \begin{subfigure}{.48\linewidth}
 \centering
-\includegraphics[width=\linewidth]{image/cmpctblock_traffic_volume.eps}
+\includegraphics[width=0.9\linewidth]{image/cmpctblock_traffic_volume.eps}
 \caption{Histogram of the size of compact blocks}
 \label{fig:cmpctblock_traffic_volume}
 \end{subfigure}
 \centering
 \begin{subfigure}{.48\linewidth}
-\includegraphics[width=\linewidth]{image/blocktxn_volume.eps}
+\includegraphics[width=0.9\linewidth]{image/blocktxn_volume.eps}
 \caption{Histogram of the size of missing transactions}
 \label{fig:blocktxn_volume}
 \end{subfigure}
 \caption{Histogram of compact block mode components}
 \label{fig:hist_cmp_component}
-\end{figure*}
+\end{figure}
 
 %The client's traffic shows a specific pattern, which makes us enable to come up with an algorithm to distinguish the Bitcoin traffic. We used our analysis in block propagation delay and Bitcoin traffic analysis to propose a correlation scheme. With the means of our correlation scheme we introduce a scheme to detect Bitcoin traffic.
 
@@ -327,13 +327,13 @@ As shown in the figures, we can model this empirical data using a Beta distribut
 \begin{figure}[!t]% to have a bigger picture just add * at the end of figure
 \begin{subfigure}{.48\linewidth}
 \centering
-\includegraphics[width=\linewidth]{image/cmpctblock_time_difference.eps}
+\includegraphics[width=0.9\linewidth]{image/cmpctblock_time_difference.eps}
 \caption{Compact block}
 \label{fig:cmpctblock_time_difference}
 \end{subfigure}
 \centering
 \begin{subfigure}{.48\linewidth}
-\includegraphics[width=\linewidth]{image/prop_delay_beta.eps}
+\includegraphics[width=0.9\linewidth]{image/prop_delay_beta.eps}
 \caption{Full block}
 \label{fig:prop_delay}
 \end{subfigure}
