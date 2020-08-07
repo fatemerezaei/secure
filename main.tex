@@ -87,7 +87,6 @@ Detecting Bitcoin Traffic Over Encrypted Channels}
 
 \author{Fatemeh Rezaei \inst{1}\and
 Shahrzad Naseri \inst{1} \and Ittay Eyal\inst{2} \and Amir Houmansadr \inst{1}
-Shahrzad Naseri\inst{1} \and Ittay Eyal\inst{2} \and Amir Houmansadr \inst{1}
 }
 
  
@@ -120,13 +119,12 @@ Bitcoin and similar blockchain-based currencies are significantly important to
  consumers and industry because of their applications in
 electronic commerce and other trust-based distributed systems. 
 Therefore, it is of paramount importance to the consumers and industry to maintain reliable access to their Bitcoin assets. 
-In this paper, we investigate the  resilience of Bitcoin to blocking by the powerful network 
+In this paper, we investigate the  resilience of Bitcoin to blocking by  powerful network 
 entities such as ISPs and governments.
-By characterizing Bitcoin's communication patterns, we design classifiers that can distinguish (and therefore block) Bitcoin traffic even if it is tunneled through an encrypted channel like Tor and even if Bitcoin traffic is being mixed with background traffic, e.g., due to browsing websites. 
-We perform extensive experiments to demonstrate the reliability of our classifiers in identifying Bitcoin traffic even despite using obfuscation protocols like Tor pluggable transports. 
-We conclude that standard obfuscation mechanisms are not enough to ensure 
-blocking-resilient access to Bitcoin (and similar cryptocurrencies), therefore
-cryptocurrency operators should deploy tailored traffic obfuscation mechanisms.
+By characterizing Bitcoin's communication patterns, we design classifiers that can distinguish (and therefore block) Bitcoin traffic even if  tunneled through an encrypted channel like Tor, and even if  mixed with background traffic (e.g., due to open webbrowser tabs). 
+We also evaluate the reliability of our bitcoin detectors in the presence of  traffic obfuscation tools like Tor pluggable transports, showing that such obfuscation mechanisms are not enough to ensure 
+blocking-resistant  access to Bitcoin, therefore arguing for traffic obfuscation mechanisms
+that are tailored to cryptocurrency applications.
 
 \keywords{\bc, traffic analysis,  blocking-resistance.}
 \end{abstract}
