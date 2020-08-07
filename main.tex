@@ -5,8 +5,8 @@
 \documentclass[runningheads]{llncs}
 %\usepackage[total={6in, 8in}]{geometry}
 
-\usepackage[utf8]{inputenc}%(only for the pdftex engine)
-%\RequirePackage[no-math]{fontspec}%(only for the luatex or the xetex engine)
+\usepackage[utf8]{inputenc}
+%(only for the pdftex engine)%\RequirePackage[no-math]{fontspec}%(only for the luatex or the xetex engine)
 \usepackage[center]{caption}
 \usepackage{float}
 \usepackage{algorithm}
@@ -82,15 +82,16 @@
 
 \begin{document}
 %
-\title{The Bitcoin Hunter:
+\title{The Bitcoin Hunter:\\
 Detecting Bitcoin Traffic Over Encrypted Channels}
 
 \author{Fatemeh Rezaei \inst{1}\and
 Shahrzad Naseri \inst{1} \and Ittay Eyal\inst{2} \and Amir Houmansadr \inst{1}
+Shahrzad Naseri\inst{1} \and Ittay Eyal\inst{2} \and Amir Houmansadr \inst{1}
 }
+
  
-\institute{College of Information and Computer Sciences, Amherst \and
-Cornell University}
+\institute{University of Massachusetts Amherst \and Technion}
 %
 %\titlerunning{Abbreviated paper title}
 % If the paper title is too long for the running head, you can set
@@ -127,7 +128,7 @@ We conclude that standard obfuscation mechanisms are not enough to ensure
 blocking-resilient access to Bitcoin (and similar cryptocurrencies), therefore
 cryptocurrency operators should deploy tailored traffic obfuscation mechanisms.
 
-\keywords{\bc . Blockchain . Cryptocurrency.}
+\keywords{\bc, traffic analysis,  blocking-resistance.}
 \end{abstract}
 
 \input{files/intro}
