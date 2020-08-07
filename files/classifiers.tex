@@ -1,5 +1,5 @@
 \section{Designing \bc Classifiers}
-We use the features described above to build robust classifiers for \bc traffic. 
+We leverage the features described above to build robust classifiers for \bc traffic. 
 We aim for our classifiers to work even in the presence of encryption and background traffic, e.g., 
 when the machine running \bc is used for web browsing and runs other applications, or when the \bc traffic is tunneled over Tor. %user's traffic is mixed with the traffic of other users in a big VPN connection. 
 %For a target connection, our classifiers extract specific features from it, using which decide if the target traffic contains \bc or not. Each of our classifiers extract certain features as introduced below. We evaluate the performance of our classifiers using false positive, true positive and accuracy.
@@ -10,7 +10,6 @@ As noted in Section~\ref{sec:prop_dist_msg}, the histogram of \bc packet sizes h
 \subsubsection{Size histogram classifier (\code{SizeHist})}\label{sec:all-packet-size-classifier}
 
 This classifier correlates the packet size histogram of a target user's traffic with the packet size histogram of \bc traffic captured by the adversary. By histogram of packet sizes we mean number of each packet size from 1 to \textit{MTU} size. To do so, the classifier first divides the given traffic into upstream and downstream directions, then it calculates the histogram of packet sizes in each direction. The baseline (real-time \bc traffic) is also divided in upstream and downstream directions. 
-
 In the next step, the classifier calculates the cosine similarity between the histogram of the target traffic and several \bc traces in both upstream and downstream direction. If both of the upstream and downstream averaged correlation values are above their thresholds, the target traffic is detected as \bc traffic.
 
 %Finally, to detect if the target traffic is \bc, the classifier compares the average of correlation values with a threshold.  %The thresholds are derived as shown in the experiments section. 
@@ -80,14 +79,13 @@ We estimate a target client's block downloading time as $\frac{block\ size}{clie
  $J$ is the standard deviation of such difference values.\fi
 
 \subsection{Neural Network-based Classifier (NN-based)}\label{class:nn}
-We use a neural network-based classifier to detect \bc in presence of a more complex background noise, e.g., browsing more than one website simultaneously. In following, we explain the feature selection phase, and then describe the design of our neural network.
+As done in similar applications~\cite{deepcore}, we use a neural network-based classifier to detect \bc in presence of a more complex background noise, e.g., browsing more than one website simultaneously. In following, we explain the feature selection phase, and then describe the design of our neural network.
 
 \paragraphb{Feature selection}
 %Again, we leverage the unique shape of \bc traffic as discussed before to classify \bc traffic using our NN-based classifier. 
 To create each sample data, we divide time into intervals
 and use the volume of traffic in each interval as our features, which is 
 presented in equation $\mbox{vlm}=v_1, v_2, ..., v_{n}$. 
-
 Note that $v_I$ is the volume of traffic in interval I. We choose $10$ minutes as the \textit{sample size}, which is the smallest length to have
 at least one peak of traffic. Furthermore, to choose the interval
 length, we try different values of $1$, $5$, $10$ and $20$ seconds. From our experiments, we find out 

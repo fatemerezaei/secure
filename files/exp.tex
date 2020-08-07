@@ -142,8 +142,7 @@ To extend the neural network-based classifier, we defined combined classifier, w
 \end{comment}
 \subsection{Summary and Comparison of the Results}
 
-The SizeHist and shape-based work only when there is a very small background noise or no noise (think time of $2$ minutes). Therefore, they are not useful when \bc traffic has a large amount of background noise. To distinguish \bc traffic in the presence of larger noises, we employ NN-based and combined classifiers. The benefit of these classifiers is that they do not have the training phase required in NN-based techniques.
-
+The SizeHist and shape-based classifiers work only when there is a very small background noise or no noise (think time of $2$ minutes). Therefore, they are not useful when \bc traffic has a large amount of background noise. To distinguish \bc traffic in the presence of larger noises, we employ NN-based and combined classifiers. The benefit of these classifiers is that they do not have the training phase required in NN-based techniques.
 On the other hand, the NN-based classifier and combined classifiers result in a better performance in the presence of higher background noise (complex web and complex CAIDA). The combined classifier outperforms the NN-based by using more features during training. This classifier detects \bc traffic using the complex web and complex CAIDA user explained in ~\ref{simpleuser} with $0\%$ false positive and much higher accuracy ($99.84\%$).
 
 

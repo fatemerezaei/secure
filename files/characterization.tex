@@ -1,7 +1,7 @@
 \section{Characterizing \bc Traffic}\label{sec:charachterzing_bc}
-\red{why this section has only one subsection? what happened to the rest of the section? you seem to have randomly deleted text to fit in the page limit. please put back whatever we had. you need to shrink not delete sections}
+%\red{why this section has only one subsection? what happened to the rest of the section? you seem to have randomly deleted text to fit in the page limit. please put back whatever we had. you need to shrink not delete sections}
 
-\fatemeh{I did not remove the text randomly. I removed the ones that was not needed and did not add anything to the context (In my opinion)}
+%\fatemeh{I did not remove the text randomly. I removed the ones that was not needed and did not add anything to the context (In my opinion)}
 %\par In this section, we investigate the characteristic of Bitcoin traffic, try to identify Bitcoin traffic in unencrypted and encrypted traffics. First we analyze the block propagation delay in Bitcoin network. Then, we use the results to come up with a scheme to correlate the client's traffic with a known baseline for Bitcoin blockchains in order to detect the Bitcoin usage in client traffic.
 
 
@@ -171,11 +171,12 @@ Message & Packets per minute & Proportion  & Average packet size\\ \hline
 %\end{comment}
 %\subsection{Ratio of Downstream to Upstream}\label{apend:ratio}
 
+We start by characterizing \bc's traffic patterns. 
 
 \subsection{Proportion and Distribution of Messages} \label{sec:prop_dist_msg}
-\bc peers generate various kinds of messages such as inv, block, tx, and etc. 
+\bc peers generate various kinds of messages as introduced in the previous section. 
 We show that the distribution and sizes of such messages are quite unique to the \bc protocol, 
-distinguishing \bc traffic reliably from other protocols. 
+making \bc traffic easily distinguishable from other protocols. 
 
 \begin{comment}
 Table~\ref{table:msg_proportion} demonstrates the proportion of different messages in the \bc traffic we collected 
@@ -184,7 +185,7 @@ Therefore, the characteristics of these messages will shape the pattern of a \bc
 \end{comment}
 
 
-\paragraphb{Distribution of Packet Sizes.}
+\paragraphb{Distribution of packet sizes.}
 Figures~\ref{fig:inv_pktsizes} to~\ref{fig:tx_pktsizes} illustrate
 the  packet size histogram of 
 different types of \bc messages in our collected \bc traffic.
@@ -194,21 +195,20 @@ Therefore, the characteristics of these messages will shape the pattern of a \bc
 
 \paragraphb{Histogram of packet sizes in aggregate traffic.}
 Figures~\ref{fig:aggregate_pkt_size_upstream_cmpct} and~\ref{fig:aggregate_pkt_size_downstream_cmpct} show the histogram of packet sizes in the upstream and downstream directions, respectively, in compact block relaying. 
-As mentioned before, \code{tx} and \code{inv} dominate the messages sent by a typical \bc peer, therefore, their sizes 
-(shown in Figures~\ref{fig:inv_pktsizes} and \ref{fig:tx_pktsizes}) strongly shape the histogram of \bc traffic, making them uniquely distinguishable from other protocols. 
+As mentioned before, \code{tx} and \code{inv} dominate the messages sent by a typical \bc peer, therefore their sizes 
+(shown in Figures~\ref{fig:inv_pktsizes} and \ref{fig:tx_pktsizes}) strongly shape the histogram of \bc traffic, making it uniquely distinguishable from other protocols. 
 
 We also show the histogram of \bc traffic in the full block relaying mode in Figures~\ref{fig:aggregate_pkt_size_upstream_full} and~\ref{fig:aggregate_pkt_size_downstream_full}. These histograms have a larger spike close to the MTU, unlike the case of compact block relaying. These are because of the larger block sizes (around 1MB) in the full block relaying. 
 
 \paragraphe{Comparing to other protocols:}
 Figures~\ref{fig:http_pkt_size_upstream} to~\ref{fig:bittorrent_pkt_size_downstream}  show the histogram of other popular protocols, collected as described in Section~\ref{sec:exp-dataset}. Note that we look at the traffic after going through an encryption tunnel, e.g., a VPN or SSH tunnel, so the histogram includes the (small) TCP ACK packets. 
-
 As we can see, 
 the packet size distribution of \bc is uniquely different from these other protocols, since a \bc connection is composed of unique messages with specific size distributions shown before. For instance, the large number of \code{inv} messages shapes the overall distribution of sizes in \bc traffic. 
 
  
 
-\paragraphb{Ratio of Downstream to Upstream.}
-We also measured the ratio of downstream to upstream traffic volume, which is shown in Figure~\ref{fig:ratio_downstream_upstream_traffic_volume_bitcoin}.
+\paragraphb{Ratio of downstream to upstream.}
+We also measured the ratio of downstream to upstream traffic volumes, which is shown in Figure~\ref{fig:ratio_downstream_upstream_traffic_volume_bitcoin}.
 Unlike other protocols like HTTP (shown in
 Figures~\ref{fig:ratio_downstream_upstream_traffic_volume_http} to \ref{ratio_downstream_upstream_traffic_volume_bittorrent}),
 \bc traffic has a \emph{symmetric} traffic volume in upstream and downstream. 
@@ -216,6 +216,11 @@ This is due to the fact that \bc peers broadcast most of the bulky protocol mess
 
 
 \subsection{Shape of Traffic}\label{sec:shape_of_traffic}
+
+Above we showed that the counts and sizes of packets in \bc demonstrate a unique behavior. 
+Here we show that, additionally, the shape of \bc traffic is distinguishable from other protocols.
+
+
 \begin{figure*}
 \centering
 \begin{subfigure}{0.32\linewidth}
@@ -250,17 +255,15 @@ This is due to the fact that \bc peers broadcast most of the bulky protocol mess
 \end{subfigure}
 \caption{Ratio of downstream to upstream traffic volume}
 \end{figure*}
-Above we showed that the counts and sizes of packets in \bc demonstrate a unique behavior. 
-In addition, the shape of traffic in \bc and the volume of traffic received over time  is distinguishable from other protocols.
 
-\paragraphb{Full block relaying mode} 
+\paragraphb{Full block relaying mode:} 
 Figure~\ref{fig:bitcoin_traffic_pattern} shows the traffic of a \bc client operating in the full block relaying mode.
 As can be seen, the small protocol packets, mostly corresponding to \code{inv} and \code{tx} messages, appear 
 uniformly over the time. 
 On the other hand, the \bc full blocks appear as large spikes of roughly 1MB at specific points in time, i.e., once a new block is generated in the network. 
 
-\paragraphb{Compact block relaying mode}
-In the compact block relaying mode, it would be harder to notice the block spikes, 
+\paragraphb{Compact block relaying mode:}
+In the compact block relaying mode, it is harder to notice the block spikes 
 since only a sketch of the blocks is transmitted. In this mode, transmitting a compact block in the network results in smaller spikes of 100KB. Spikes of such small sizes may also occur when unverified transactions are transmitted, which will increase the detection's false positive. Also, a \bc client may operate in the high bandwidth mode, in which the receiver node  asks its peers to send new blocks without asking for permissions first. This will lead to more than one peer sending the same block at the same time. This and the large volume of missed transactions result in having spikes with more than 100 KB in the traffic. 
 Figure~\ref{fig:cmpctblock_traffic_volume_detectable} illustrates  when and how
 compact blocks appear on a peer's traffic. As can be seen, compact blocks appear at
@@ -289,7 +292,7 @@ As can be seen, most of the compact blocks are as small as 15 KB (in contrast to
 \end{figure*}
 
 %\Q{Not quite sure what this is , and why we need this. Maybe elaborate?}\A{So this figure is showing the volume of transactions which the receiving haven't had and will receive it by \code{blocktxn} message, since it will send to receiving node after sending the compact block it also may have impact on the traffic volume at the point that we are expecting a block. }
- We also measure the volume of transactions missing from an announced compact block (we do so based on the payload length of \code{blocktxn} messages).
+Finally, we measure the volume of transactions missing from an announced compact block (we do so based on the payload length of \code{blocktxn} messages).
 As described earlier,  a \bc client operating in the compact block mode will download such missing transactions.
 %We measure the missing transactions based on the the payload length of \code{blocktxn} messages in the same way we measure the compact block sizes. 
 This is shown in Figure~\ref{fig:blocktxn_volume}. 
@@ -317,8 +320,7 @@ As we can see most of the transactions have volumes less than 100 KB.
 
 %%%%%%%%%
 
-\paragraphb{Block propagation latencies.} The propagation delay in the Bitcoin network is due to transmission delays and block verification by the receiving node at each hop. The transmission delay is the time to exchanging \textit{inv} and \textit{get data} messages, and sending the block via a \textit{block} message. 
-
+\paragraphb{Block propagation latencies.} The propagation delay in the Bitcoin network is due to transmission delays and block verification by the receiving node at each hop. The transmission delay is the time to exchanging \code{inv} and \code{get data} messages, and sending the block via a \code{block} message. 
  We measure block propagation delay by subtracting the receiving time of the block message and the time stamp in the header of the block message. Figures~\ref{fig:cmpctblock_time_difference} and \ref{fig:prop_delay} show the histogram of propagation delay for  $6000$ blocks in compact block and full block relaying, respectively. 
 As shown in the figures, we can model this empirical data using a Beta distribution~\cite{probabilitybook}. %We choose a maximum for propagation delay such that $99\%$ of beta distribution is below that maximum. According to our measurements this value equals to $65$ seconds.\fatemeh{rewrite this part}
 
@@ -335,7 +337,7 @@ As shown in the figures, we can model this empirical data using a Beta distribut
 \caption{Full block}
 \label{fig:prop_delay}
 \end{subfigure}
-\caption{Histogram of block propagation delay}
+\caption{Histogram of block propagation delays}
 \label{fig:prop_delay_full_compact}
 \end{figure} 
 
